@@ -456,9 +456,9 @@
 			baseConfigurationReference = 741713920BFBC1F2D8C49DF2 /* Pods-MixScrollDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 6LV4645D3B;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MixScrollDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -468,7 +468,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xing.MixScrollDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = nhiiWildDev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -478,9 +478,9 @@
 			baseConfigurationReference = 90E2721156DDEC4EC17E4DC9 /* Pods-MixScrollDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 6LV4645D3B;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MixScrollDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -490,7 +490,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xing.MixScrollDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = nhiiWildDev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
