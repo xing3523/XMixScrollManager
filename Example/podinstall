@@ -1,0 +1,5 @@
+#!/bin/bash
+pod_path=$(dirname $0)
+cd $pod_path
+#echo "pod_path $pod_path"
+pod install
