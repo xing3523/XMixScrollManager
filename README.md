@@ -14,7 +14,7 @@
 ## 使用方法
 简单使用
 ``` 
-self.scrollManager = [XMixScrollManager managerWithMainScrollView:mainScrollView contentScrollViews:@[contentScrollVIew1,contentScrollVIew2]];
+self.scrollManager = [XMixScrollManager managerWithMainScrollView:mainScrollView contentScrollViews:@[contentScrollView1,contentScrollView2]];
 self.scrollManager.contentScrollDistance = 300;
 ```
 
