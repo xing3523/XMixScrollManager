@@ -92,8 +92,7 @@ CGFloat const XMixScrollUndefinedValue = -999;
 
 + (instancetype)managerWithMainScrollView:(UIScrollView *)mainScrollView contentScrollViews:(NSArray<UIScrollView *> *)contentScrollViews
 {
-    XMixScrollManager *manager = [XMixScrollManager new];
-    [manager setupWithMainScrollView:mainScrollView contentScrollViews:contentScrollViews];
+    XMixScrollManager *manager = [[XMixScrollManager alloc] initWithMainScrollView:mainScrollView contentScrollViews:contentScrollViews];
     manager.mixScrollPullType = XMixScrollPullTypeMain;
     manager.contentScrollDistance = XMixScrollUndefinedValue;
     manager.showIndicatorType = XShowIndicatorTypeChange;
@@ -103,26 +102,28 @@ CGFloat const XMixScrollUndefinedValue = -999;
     return manager;
 }
 
-- (void)setupWithMainScrollView:(UIScrollView *)mainScrollView contentScrollViews:(NSArray<UIScrollView *> *)contentScrollViews
+- (instancetype)initWithMainScrollView:(UIScrollView *)mainScrollView contentScrollViews:(NSArray<UIScrollView *> *)contentScrollViews
 {
-    self.mainScrollView = mainScrollView;
-
-    if (!contentScrollViews) {
-        contentScrollViews = @[];
+    if (self = [super init]) {
+        self.mainScrollView = mainScrollView;
+        if (!contentScrollViews) {
+            contentScrollViews = @[];
+        }
+        self.contentScrollViews = [contentScrollViews mutableCopy];
+        self.mainScrollView.p.isMain = YES;
+        self.mainScrollView.p.canScroll = YES;
+        self.mainScrollView.p.markScroll = YES;
+        self.mainScrollView.p.scrollManager = self;
+        [contentScrollViews enumerateObjectsUsingBlock:^(UIScrollView *_Nonnull contentScrollView, NSUInteger idx, BOOL *_Nonnull stop) {
+            contentScrollView.p.canScroll = NO;
+            contentScrollView.p.markScroll = YES;
+            contentScrollView.p.index = idx;
+            contentScrollView.p.scrollManager = self;
+            [contentScrollView addObserver:self forKeyPath:XKeyPath options:NSKeyValueObservingOptionNew context:NULL];
+        }];
+        [mainScrollView addObserver:self forKeyPath:XKeyPath options:NSKeyValueObservingOptionNew context:NULL];
     }
-    self.contentScrollViews = [contentScrollViews mutableCopy];
-    self.mainScrollView.p.isMain = YES;
-    self.mainScrollView.p.canScroll = YES;
-    self.mainScrollView.p.markScroll = YES;
-    self.mainScrollView.p.scrollManager = self;
-    [contentScrollViews enumerateObjectsUsingBlock:^(UIScrollView *_Nonnull contentScrollView, NSUInteger idx, BOOL *_Nonnull stop) {
-        contentScrollView.p.canScroll = NO;
-        contentScrollView.p.markScroll = YES;
-        contentScrollView.p.index = idx;
-        contentScrollView.p.scrollManager = self;
-        [contentScrollView addObserver:self forKeyPath:XKeyPath options:NSKeyValueObservingOptionNew context:NULL];
-    }];
-    [mainScrollView addObserver:self forKeyPath:XKeyPath options:NSKeyValueObservingOptionNew context:NULL];
+    return self;
 }
 
 - (void)addContentScrollView:(UIScrollView *)contentScrollView withIndex:(NSInteger)index

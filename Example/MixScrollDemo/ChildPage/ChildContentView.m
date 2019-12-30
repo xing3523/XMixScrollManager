@@ -38,12 +38,25 @@
         }];
     }
     self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    self.scrollView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
 
 - (void)loadData
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.scrollView.mj_header endRefreshing];
+    });
+}
+
+- (void)loadMoreData
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.scrollView.mj_footer endRefreshing];
+        NSArray *array = @[@"add", @"add", @"add", @"add", @"add"];
+        NSMutableArray *dataArray = [self.dataArray mutableCopy];
+        [dataArray addObjectsFromArray:array];
+        self.dataArray = [dataArray copy];
+        [self.scrollView performSelector:@selector(reloadData)];
     });
 }
 
