@@ -3,7 +3,7 @@
 ## 介绍
 管理UIScrollView嵌套滑动的一个小组件。
 通过KVO实现，无UI布局，低耦合。
-
+[简书相关文章](https://www.jianshu.com/p/146e42ec7dc8)
 ## 主要功能
 - 支持滑动进度条可选择是否显示；
 - 支持嵌套主次UIScrollView可选择是否允许下拉；
