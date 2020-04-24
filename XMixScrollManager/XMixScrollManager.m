@@ -440,6 +440,11 @@ CGFloat const XMixScrollUndefinedValue = -999;
     return number ? [number boolValue] : _enableDynamicSimulate;
 }
 
+- (void)setContentScrollDistance:(CGFloat)contentScrollDistance
+{
+    _contentScrollDistance = ceil(contentScrollDistance);
+}
+
 CREATE_LAZYLOAD_XMutableDic(indicatorTypeDic)
 CREATE_LAZYLOAD_XMutableDic(pullTypeDic)
 CREATE_LAZYLOAD_XMutableDic(scrollsToMainTopDic)
@@ -456,7 +461,7 @@ CREATE_LAZYLOAD_XMutableDic(enableDynamicDic)
 {
     [_mainScrollView removeObserver:self forKeyPath:XKeyPath];
     [_contentSuperScrollView removeObserver:self forKeyPath:XKeyPath];
-    for (UIScrollView *contentScrollView in self.contentScrollViews) {
+    for (UIScrollView *contentScrollView in _contentScrollViews) {
         [contentScrollView removeObserver:self forKeyPath:XKeyPath];
     }
 }
