@@ -19,6 +19,7 @@ self.scrollManager.contentScrollDistance = 300;
 ```
 
 XMixScrollManager不关注UI布局，contentScrollDistance需要传入准确的值。
+其他可选属性的使用可见demo。
 
 ## 部分效果图
 ![](https://github.com/xing3523/XMixScrollManager/raw/master/Images/效果图1.gif)
