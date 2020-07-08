@@ -98,11 +98,13 @@
     return [UIColor colorWithRed:arc4random() % 256 / 255.0 green:arc4random() % 256 / 255.0 blue:arc4random() % 256 / 255.0 alpha:1];
 }
 
+
 - (UIScrollView *)newScrollView
 {
     UIScrollView *scrollView = [UIScrollView new];
+    __weak typeof(scrollView) weakScrollView = scrollView;
     scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [scrollView.mj_header endRefreshing];
+        [weakScrollView.mj_header endRefreshing];
     }];
     return scrollView;
 }

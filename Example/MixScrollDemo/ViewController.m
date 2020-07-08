@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"Demo";
     self.navigationController.navigationBar.translucent = NO;
     self.textArray = @[@"简单SrollView嵌套",
                        @"tableView嵌套",

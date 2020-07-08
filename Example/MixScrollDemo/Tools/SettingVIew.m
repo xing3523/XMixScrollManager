@@ -43,6 +43,7 @@
                                @[@"YES", @"NO"]];
     NSMutableArray *views = [NSMutableArray new];
     UIView *view = [UIView new];
+    view.layer.cornerRadius = 8;
     view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     for (int i = 0; i < titles.count; i++) {
         UILabel *label = [UILabel new];
