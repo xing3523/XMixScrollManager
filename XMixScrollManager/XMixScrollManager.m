@@ -30,7 +30,7 @@
 
 @interface UIScrollView (XMixScrollManager)<UIGestureRecognizerDelegate>
 ///属性类
-@property (nonatomic, weak, readonly) XScrollViewProperty *p;
+@property (nonatomic, strong, readonly) XScrollViewProperty *p;
 @end
 
 @protocol XDynamicSimulateDelegate <NSObject>
@@ -63,11 +63,11 @@ CGFloat const XMixScrollUndefinedValue = -999;
 
 @interface XMixScrollManager ()<XDynamicSimulateDelegate>
 ///主视图
-@property (nonatomic, weak) UIScrollView *mainScrollView;
+@property (nonatomic, strong) UIScrollView *mainScrollView;
 ///是否已获取到contentSuperScrollView
 @property (nonatomic) BOOL hasGetContentSuper;
 ///内容视图的横向scrollView父视图
-@property (nonatomic, weak) UIScrollView *contentSuperScrollView;
+@property (nonatomic, strong) UIScrollView *contentSuperScrollView;
 ///联动的内容视图
 @property (nonatomic, strong) NSMutableArray *contentScrollViews;
 ///是否touch在主视图里 内容视图之外
@@ -453,11 +453,11 @@ CREATE_LAZYLOAD_XMutableDic(enableDynamicDic)
 #pragma mark- dealloc
 - (void)dealloc
 {
-    [self removeObser];
+    [self removeObserver];
 //    NSLog(@"%s", __func__);
 }
 
-- (void)removeObser
+- (void)removeObserver
 {
     [_mainScrollView removeObserver:self forKeyPath:XKeyPath];
     [_contentSuperScrollView removeObserver:self forKeyPath:XKeyPath];
