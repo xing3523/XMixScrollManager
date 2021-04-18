@@ -58,7 +58,7 @@
         [view addSubview:segment];
         if (i == 0) {
             segment.selectedSegmentIndex = 2;
-        } else if (i == 3 || i == 4) {
+        } else if ( i == 1 || i == 3 || i == 4) {
             segment.selectedSegmentIndex = 1;
         } else {
             segment.selectedSegmentIndex = 0;

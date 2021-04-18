@@ -1,8 +1,10 @@
 # XMixScrollManager
 
 ## 介绍
-管理UIScrollView嵌套滑动的一个小组件。
-通过KVO实现，无UI布局，低耦合。
+管理UIScrollView嵌套滑动的一个小组件。通过KVO实现，无UI布局，低耦合。
+
+Swift版本->[XMixScrollManager_swift](https://github.com/xing3523/XMixScrollManager_swift)
+
 [简书相关文章](https://www.jianshu.com/p/146e42ec7dc8)
 ## 主要功能
 - 支持滑动进度条可选择是否显示；
@@ -22,8 +24,8 @@ XMixScrollManager不关注UI布局，contentScrollDistance需要传入准确的�
 其他可选属性的使用可见demo。
 
 ## 部分效果图
-![](https://github.com/xing3523/XMixScrollManager/raw/master/Images/效果图1.gif)
-![](https://github.com/xing3523/XMixScrollManager/raw/master/Images/效果图2.gif)
+![](https://github.com/xing3523/Resources/raw/master/XMixScrollManager/demo1.gif)
+![](https://github.com/xing3523/Resources/raw/master/XMixScrollManager/demo2.gif)
 ## 安装
 
 ### CocoaPods

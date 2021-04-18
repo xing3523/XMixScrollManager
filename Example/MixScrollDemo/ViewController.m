@@ -23,7 +23,9 @@
                        @"tableView嵌套",
                        @"collectionView嵌套",
                        @"即用式添加嵌套",
-                       @"散装属性设置"];
+                       @"散装属性设置",
+                       @"tableView嵌套collectionView（无横向）",
+    ];
     [self setUI];
 }
 

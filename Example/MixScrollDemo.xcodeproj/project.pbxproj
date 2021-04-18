@@ -11,6 +11,7 @@
 		213716B8239A813900D78E7F /* TestVC3.m in Sources */ = {isa = PBXBuildFile; fileRef = 213716B7239A813900D78E7F /* TestVC3.m */; };
 		214DCDF2239CF39C0063441D /* ChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 214DCDF1239CF39C0063441D /* ChildVC.m */; };
 		216CE481239935A900128500 /* TestVC1.m in Sources */ = {isa = PBXBuildFile; fileRef = 216CE480239935A900128500 /* TestVC1.m */; };
+		217D9F5D283D037400A4F878 /* TestVC6.m in Sources */ = {isa = PBXBuildFile; fileRef = 217D9F5C283D037400A4F878 /* TestVC6.m */; };
 		21889F2523A258A600C92EB7 /* TestVC4.m in Sources */ = {isa = PBXBuildFile; fileRef = 21889F2423A258A600C92EB7 /* TestVC4.m */; };
 		21B96AD823A7BE6800D57ECC /* SettingVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B96AD723A7BE6800D57ECC /* SettingVIew.m */; };
 		21B96ADB23A7C85B00D57ECC /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B96ADA23A7C85B00D57ECC /* BaseVC.m */; };
@@ -36,6 +37,8 @@
 		214DCDF1239CF39C0063441D /* ChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChildVC.m; sourceTree = "<group>"; };
 		216CE47F239935A900128500 /* TestVC1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestVC1.h; sourceTree = "<group>"; };
 		216CE480239935A900128500 /* TestVC1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVC1.m; sourceTree = "<group>"; };
+		217D9F5B283D037400A4F878 /* TestVC6.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestVC6.h; sourceTree = "<group>"; };
+		217D9F5C283D037400A4F878 /* TestVC6.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVC6.m; sourceTree = "<group>"; };
 		21889F2323A258A600C92EB7 /* TestVC4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestVC4.h; sourceTree = "<group>"; };
 		21889F2423A258A600C92EB7 /* TestVC4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestVC4.m; sourceTree = "<group>"; };
 		21B96AD623A7BE6800D57ECC /* SettingVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingVIew.h; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 				21889F2423A258A600C92EB7 /* TestVC4.m */,
 				21B96ADC23A8EE8E00D57ECC /* TestVC5.h */,
 				21B96ADD23A8EE8E00D57ECC /* TestVC5.m */,
+				217D9F5B283D037400A4F878 /* TestVC6.h */,
+				217D9F5C283D037400A4F878 /* TestVC6.m */,
 			);
 			path = PageVC;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 				21D29627239686EC0062FC51 /* ChildContentView.m in Sources */,
 				213716B8239A813900D78E7F /* TestVC3.m in Sources */,
 				21D29614239680F50062FC51 /* ViewController.m in Sources */,
+				217D9F5D283D037400A4F878 /* TestVC6.m in Sources */,
 				21B96ADB23A7C85B00D57ECC /* BaseVC.m in Sources */,
 				214DCDF2239CF39C0063441D /* ChildVC.m in Sources */,
 				21D2960E239680F50062FC51 /* AppDelegate.m in Sources */,

@@ -12,7 +12,6 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ChildView *childView;
 @property (nonatomic, strong) UIView *tableHeadView;
-@property (nonatomic, strong) UIButton *rightBarButton;
 @property (nonatomic, strong) UITableViewCell *uniqeCell;
 @property (nonatomic) NSInteger dataNum;
 
@@ -29,15 +28,6 @@
 
 - (void)setUI
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"移除head" forState:UIControlStateNormal];
-    [button setTitle:@"添加head" forState:UIControlStateSelected];
-    [button sizeToFit];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(changeClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.rightBarButton = button;
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-
     UILabel *headView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
     headView.textAlignment = NSTextAlignmentCenter;
     headView.text = @"tableHeaderView";
@@ -55,23 +45,12 @@
     [self reloadSetting];
 }
 
-- (void)changeClick:(UIButton *)sender
-{
-    sender.selected = !sender.selected;
-
-    self.scrollManager.contentScrollDistance = XMixScrollUndefinedValue;
-    self.tableView.contentOffset = CGPointZero;
-    self.tableView.tableHeaderView = sender.selected ? nil : self.tableHeadView;
-    [self.tableView reloadData];
-}
-
 - (void)loadData
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.tableView.mj_header endRefreshing];
         self.scrollManager.contentScrollDistance = XMixScrollUndefinedValue;
         self.tableView.tableHeaderView = self.tableView.tableHeaderView ? nil : self.tableHeadView;
-        self.rightBarButton.selected = !self.tableView.tableHeaderView;
         [self.tableView reloadData];
     });
 }
