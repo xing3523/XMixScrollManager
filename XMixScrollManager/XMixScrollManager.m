@@ -489,12 +489,12 @@ CREATE_LAZYLOAD_XMutableDic(enableDynamicDic)
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
-    if (self.p.scrollManager.enableDynamicSimulate) {
-        [self.p.scrollManager.dynamicSimulate stop];
+    XMixScrollManager *scrollManager = self.p.scrollManager;
+    if (scrollManager.enableDynamicSimulate) {
+        [scrollManager.dynamicSimulate stop];
         if (self.p.isMain) {
-            XMixScrollManager *scrollManager = self.p.scrollManager;
             if (scrollManager.useAll) {
-                self.p.scrollManager.isTouchMain = point.y > 0;
+                scrollManager.isTouchMain = point.y > 0;
             } else {
                 scrollManager.isTouchMain = point.y < scrollManager.contentScrollDistance;
             }
