@@ -69,6 +69,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL enableDynamicSimulate;
 ///动态模拟过度滑动效果 阻力参数 默认 2
 @property (nonatomic) CGFloat dynamicResistance;
+///hook手势方法shouldRecognizeSimultaneouslyWithGestureRecognizer后，是否需要透传抛出处理，默认NO
+@property (class, nonatomic) BOOL gestureThrow;
 
 #pragma mark- 散装属性设置 可分别定制contentScrollView的一些属性
 

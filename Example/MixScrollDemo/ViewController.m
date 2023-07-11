@@ -67,3 +67,12 @@
 
 CREATE_LAZYLOAD(UITableView, tableView)
 @end
+
+//@implementation UIScrollView (Test)
+//
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+//{
+//    return YES;
+//}
+//
+//@end

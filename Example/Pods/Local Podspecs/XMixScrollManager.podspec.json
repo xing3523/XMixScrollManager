@@ -1,6 +1,6 @@
 {
   "name": "XMixScrollManager",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "summary": "A manager class for scroll together.",
   "homepage": "https://github.com/xing3523/XMixScrollManager.git",
   "license": {
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/xing3523/XMixScrollManager.git",
-    "tag": "0.0.4"
+    "tag": "0.0.5"
   },
   "source_files": [
     "XMixScrollManager",

@@ -42,6 +42,7 @@
     self.scrollManager.enableDynamicSimulate = self.enableDynamicSimulate;
     self.scrollManager.showIndicatorType = self.showIndicatorType;
     self.scrollManager.enableCustomConfig = self.enableCustomConfig;
+//    XMixScrollManager.gestureThrow = YES;
 }
 
 - (SettingVIew *)settingView

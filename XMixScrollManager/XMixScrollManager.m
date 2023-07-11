@@ -60,7 +60,7 @@ CGFloat const XMixScrollUndefinedValue = -999;
     } \
     return _##_name; \
 }
-
+static BOOL _gestureThrow = NO;
 @interface XMixScrollManager ()<XDynamicSimulateDelegate>
 ///主视图
 @property (nonatomic, strong) UIScrollView *mainScrollView;
@@ -188,7 +188,16 @@ CGFloat const XMixScrollUndefinedValue = -999;
             }
             //超出范围content scroll 接手
             if ((scrollView.contentOffset.y > self.contentScrollDistance || self.contentScrollDistance == 0) && self.contentScrollDistance != XMixScrollUndefinedValue) {
-                [self changeMainScrollStatus:NO];
+                BOOL needMainScroll = NO;
+                if (self.contentScrollViews.count == 0) {
+                    needMainScroll = YES;
+                } else {
+                    if (self.contentScrollViews.count == 1) {
+                        UIScrollView *contentScrollView = self.contentScrollViews.firstObject;
+                        needMainScroll = contentScrollView.contentSize.height <= contentScrollView.frame.size.height;
+                    }
+                }
+                [self changeMainScrollStatus:needMainScroll];
                 scrollView.contentOffset = CGPointMake(0, self.contentScrollDistance);
             }
             //是否允许下拉判断
@@ -255,6 +264,9 @@ CGFloat const XMixScrollUndefinedValue = -999;
             return;
         }
     }
+    if (scrollView.p.markScroll) {
+        return;
+    }
     _contentSuperScrollView = scrollView;
     [_contentSuperScrollView addObserver:self forKeyPath:XKeyPath options:NSKeyValueObservingOptionNew context:NULL];
 }
@@ -306,7 +318,9 @@ CGFloat const XMixScrollUndefinedValue = -999;
         if (mainCanScroll) {
             contentScrollView.contentOffset = CGPointZero;
         }
-        if (!self.scrollsToMainTop) {
+        if (self.scrollsToMainTop) {
+            contentScrollView.scrollsToTop = NO;
+        } else {
             contentScrollView.scrollsToTop = !mainCanScroll;
         }
     }
@@ -445,6 +459,14 @@ CGFloat const XMixScrollUndefinedValue = -999;
     _contentScrollDistance = ceil(contentScrollDistance);
 }
 
++ (void)setGestureThrow:(BOOL)gestureThrow {
+    _gestureThrow = gestureThrow;
+}
+
++ (BOOL)gestureThrow {
+    return _gestureThrow;
+}
+
 CREATE_LAZYLOAD_XMutableDic(indicatorTypeDic)
 CREATE_LAZYLOAD_XMutableDic(pullTypeDic)
 CREATE_LAZYLOAD_XMutableDic(scrollsToMainTopDic)
@@ -473,8 +495,26 @@ CREATE_LAZYLOAD_XMutableDic(enableDynamicDic)
 #pragma mark- UIScrollView category
 
 @implementation UIScrollView (XMixScrollManager)
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self hookGestureRecognizer];
+    });
+}
++ (void)hookGestureRecognizer {
+    SEL originalSeletor = @selector(gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:);
+    SEL defaultSeletor = @selector(default_gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:);
+    SEL swizzledSelector =  @selector(mix_gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:);
+    Method originalMethod = class_getInstanceMethod(self, originalSeletor);
+    Method defaultMethod = class_getInstanceMethod(self, defaultSeletor);
+    Method swizzledMethod = class_getInstanceMethod(self, swizzledSelector);
+    BOOL didAddMethod = class_addMethod(self, originalSeletor, method_getImplementation(defaultMethod), method_getTypeEncoding(defaultMethod));
+    if (!didAddMethod) {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
+}
+/// 其他类没有则添加默认实现
+- (BOOL)default_gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if (self.p.markScroll) {
         //阻止横竖联动
@@ -485,6 +525,18 @@ CREATE_LAZYLOAD_XMutableDic(enableDynamicDic)
     }
     //阻止其他意外联动
     return NO;
+}
+/// 其他类已实现shouldRecognizeSimultaneouslyWithGestureRecognizer则hook实现
+- (BOOL)mix_gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if (self.p.markScroll) {
+        //阻止横竖联动
+        UIScrollView *scrollView = (UIScrollView *)otherGestureRecognizer.view;
+        if ([scrollView isKindOfClass:[UIScrollView class]] && scrollView.p.markScroll) {
+            return YES;
+        }
+    }
+    return XMixScrollManager.gestureThrow ? [self mix_gestureRecognizer:gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:otherGestureRecognizer] : NO;
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event

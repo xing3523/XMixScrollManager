@@ -1,7 +1,7 @@
 PODS:
   - Masonry (1.1.0)
   - MJRefresh (3.5.0)
-  - XMixScrollManager (0.0.4)
+  - XMixScrollManager (0.0.5)
 
 DEPENDENCIES:
   - Masonry
@@ -20,8 +20,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
-  XMixScrollManager: 29d3de6aa1c9bcece1de8d1a65d9d1a46402692a
+  XMixScrollManager: 824593403c69e2dca8a6ffdaa4671dcd83af1b78
 
 PODFILE CHECKSUM: 135c2e8de3ffac2ca6f8846e96005409e2223769
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.12.1

@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataNum = 5;
-    self.data2Num = 30;
+    self.data2Num = 10;
     self.data2AllNum = 60;
     [self setUI];
 }
@@ -90,12 +90,7 @@
         if (!self.uniqeCell) {
             self.uniqeCell = [tableView dequeueReusableCellWithIdentifier:@"ChildView"];
             self.uniqeCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            UIScrollView *superScrollView = [UIScrollView new];
-            [self.uniqeCell.contentView addSubview:superScrollView];
-            [superScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.mas_equalTo(UIEdgeInsetsZero);
-            }];
-            [superScrollView addSubview:self.collectionView];
+            [self.uniqeCell.contentView addSubview:self.collectionView];
             [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.edges.mas_equalTo(UIEdgeInsetsZero);
                 make.size.mas_equalTo(self.uniqeCell.contentView);
@@ -178,7 +173,7 @@ CREATE_LAZYLOAD(ChildView, childView)
 - (UICollectionViewCell *)cellForIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    cell.backgroundColor = [UIColor systemOrangeColor];
     return cell;
 }
 
