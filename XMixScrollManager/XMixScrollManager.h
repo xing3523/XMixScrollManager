@@ -69,8 +69,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL enableDynamicSimulate;
 ///动态模拟过度滑动效果 阻力参数 默认 2
 @property (nonatomic) CGFloat dynamicResistance;
-///hook手势方法shouldRecognizeSimultaneouslyWithGestureRecognizer后，是否需要透传抛出处理，默认NO
-@property (class, nonatomic) BOOL gestureThrow;
+///是否使用全部区域进行触摸判断 默认NO
+@property (nonatomic) BOOL useAll;
+///mainScrollView的上部高度，用于判断动态模拟是否在待开启范围内 默认使用contentScrollDistance
+@property (nonatomic) CGFloat mainTopHeight;
 
 #pragma mark- 散装属性设置 可分别定制contentScrollView的一些属性
 
@@ -81,6 +83,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setMixScrollPullType:(XMixScrollPullType)mixScrollPullType forScrollView:(UIScrollView *)contentScrollView;
 - (void)setScrollsToMainTop:(BOOL)scrollsToMainTop forScrollView:(UIScrollView *)contentScrollView;
 - (void)setEnableDynamicSimulate:(BOOL)enableDynamicSimulate forScrollView:(UIScrollView *)contentScrollView;
+
+/// 移除一个子scrollView
+/// @param contentScrollView 子scrollView
+- (void)removeContentScrollView:(UIScrollView *)contentScrollView;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;

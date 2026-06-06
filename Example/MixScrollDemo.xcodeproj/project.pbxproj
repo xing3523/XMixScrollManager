@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -291,9 +291,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MixScrollDemo/Pods-MixScrollDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MixScrollDemo/Pods-MixScrollDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

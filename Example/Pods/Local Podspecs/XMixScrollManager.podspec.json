@@ -10,7 +10,7 @@
     "xing": "xinxof@foxmail.com"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "11.0"
   },
   "source": {
     "git": "https://github.com/xing3523/XMixScrollManager.git",

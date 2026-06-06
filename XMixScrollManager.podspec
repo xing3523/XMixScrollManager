@@ -10,13 +10,13 @@ Pod::Spec.new do |spec|
 
 
   spec.name         = "XMixScrollManager"
-  spec.version      = "0.0.5"
+  spec.version      = "0.0.6"
   spec.summary      = "A manager class for scroll together."
   spec.homepage     = "https://github.com/xing3523/XMixScrollManager.git"
   spec.license      = { :type => "MIT" }
   spec.authors      = { "xing" => "xinxof@foxmail.com" }
-  spec.platform     = :ios, "8.0"
-  spec.ios.deployment_target = "8.0"
+  spec.platform     = :ios, "11.0"
+  spec.ios.deployment_target = "11.0"
   spec.source       = { :git => "https://github.com/xing3523/XMixScrollManager.git", :tag => "#{spec.version}" }
   
   spec.source_files  = "XMixScrollManager", "XMixScrollManager/*.{h,m}"
